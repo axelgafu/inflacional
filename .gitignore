@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+dist/
+build/
+*.egg-info/
+.coverage
+htmlcov/
+
+# Environment Variables
+.env
+
+# Project specific
+reports/

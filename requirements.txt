@@ -1,0 +1,10 @@
+click
+behave
+requests
+python-dotenv
+pytest
+pytest-cov
+coverage
+pdfplumber
+beautifulsoup4
+ruff

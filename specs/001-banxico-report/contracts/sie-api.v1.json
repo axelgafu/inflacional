@@ -1,0 +1,44 @@
+{
+    "info": {
+        "title": "Banxico SIE REST API v1 (Subset)",
+        "description": "Endpoints and schemas used for the Inflation Report Generator",
+        "version": "1.0.0"
+    },
+    "endpoints": {
+        "getSeriesData": {
+            "path": "/Series/SeriesData/{idSeries}/{fechaInicial}/{fechaFinal}",
+            "method": "GET",
+            "parameters": {
+                "idSeries": "string (e.g., TI52, SF43718)",
+                "fechaInicial": "string (AAAA-MM-DD)",
+                "fechaFinal": "string (AAAA-MM-DD)"
+            },
+            "headers": {
+                "Bmx-Token": "string (Required)"
+            },
+            "responses": {
+                "200": {
+                    "description": "Successful extraction",
+                    "schema": {
+                        "bmx": {
+                            "series": [
+                                {
+                                    "idSerie": "string",
+                                    "titulo": "string",
+                                    "datos": [
+                                        {
+                                            "fecha": "string (DD/MM/AAAA)",
+                                            "dato": "string (float representation)"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                "429": "Too Many Requests",
+                "500": "Server Error"
+            }
+        }
+    }
+}

@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "banxico-report"
+version = "0.1.0"
+description = "Generador de reportes de inflación de Banxico"
+dependencies = [
+    "click",
+    "behave",
+    "requests",
+    "python-dotenv",
+    "pdfplumber",
+    "beautifulsoup4",
+]
+requires-python = ">=3.10"
+
+[project.scripts]
+banxico-report = "banxico_report.cli:cli"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.coverage.run]
+source = ["src/banxico_report"]
+omit = ["tests/*"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 80

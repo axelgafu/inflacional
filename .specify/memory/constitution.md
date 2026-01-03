@@ -1,13 +1,9 @@
 <!--
 Sync Impact Report:
-- Version change: [INITIAL] → 1.0.0
+- Version change: 1.0.0 → 1.1.0
 - List of modified principles:
-  - [PRINCIPLE_1_NAME] → I. Security & Privacy First
-  - [PRINCIPLE_2_NAME] → II. Quality through BDD & Coverage
-  - [PRINCIPLE_3_NAME] → III. Strict API Compliance
-  - [PRINCIPLE_4_NAME] → IV. CLI-First Interface
-  - [PRINCIPLE_5_NAME] → V. Mandatory Documentation
-- Added sections: Technology Stack, Development Standards
+  - V. Mandatory Documentation → V. Comprehensive & Up-to-Date Documentation (Expanded to include ADRs and professional README requirement)
+- Added sections: N/A
 - Removed sections: N/A
 - Templates requiring updates:
   - .specify/templates/plan-template.md (✅ updated)
@@ -32,8 +28,8 @@ The project MUST strictly adhere to the official [Banxico SIE REST API v1](https
 ### IV. CLI-First Interface
 The main executable MUST provide a robust command-line interface implemented with the `click` library. The CLI should follow standard POSIX conventions for flags, arguments, and exit codes to ensure high usability and interoperability.
 
-### V. Mandatory Documentation
-Technical excellence requires clarity. Technical design documentation MUST reside in `doc/design` (covering architecture and data flows), and User documentation MUST reside in `doc/user` (covering setup and execution).
+### V. Comprehensive & Up-to-Date Documentation
+Technical excellence requires clarity. Technical project documentation (architecture, design, and decision records) MUST be kept up to date for every feature implementation. Architecture and design docs reside in `doc/design`. Architecture Decision Records (ADRs) MUST be maintained alongside design docs to capture the "why" behind technical choices. User documentation MUST reside in `doc/user`. Additionally, the repository root MUST feature a professional `README.md` that is appealing for both software professionals and finance experts to explore the project.
 
 ## Technology Stack
 
@@ -43,6 +39,7 @@ The project relies on a modern Python ecosystem:
 - **Testing/BDD**: `behave`, `pytest`, `coverage`
 - **API**: `requests`
 - **Environment**: `python-dotenv`
+- **Documentation**: Mermaid.js (for technical diagrams)
 
 ## Development Standards
 
@@ -54,4 +51,4 @@ The project relies on a modern Python ecosystem:
 
 This constitution supersedes all other documentation. Amendments require a version bump and an update to the Sync Impact Report.
 
-**Version**: 1.0.0 | **Ratified**: 2026-01-02 | **Last Amended**: 2026-01-02
+**Version**: 1.1.0 | **Ratified**: 2026-01-02 | **Last Amended**: 2026-01-02

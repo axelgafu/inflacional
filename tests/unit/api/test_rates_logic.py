@@ -1,8 +1,8 @@
 import pytest
 from datetime import date, timedelta
 from unittest.mock import MagicMock
-from src.banxico_report.api.rates import RatesFetcher
-from src.banxico_report.utils.errors import RateRetrievalError
+from banxico_report.api.rates import RatesFetcher
+from banxico_report.utils.errors import RateRetrievalError
 
 @pytest.fixture
 def mock_provider():
@@ -21,7 +21,7 @@ def test_get_target_rate_with_lookback(mock_provider):
         "bmx": {
             "series": [
                 {
-                    "idSerie": "TI52",
+                    "idSerie": "SF331451",
                     "datos": [
                         {"fecha": "2023-12-01", "dato": "11.00"},
                         {"fecha": "2023-12-04", "dato": "11.25"}
@@ -56,7 +56,7 @@ def test_get_target_rate_critical_failure(mock_provider):
         "bmx": {
             "series": [
                 {
-                    "idSerie": "TI52"
+                    "idSerie": "SF331451",
                     # missing "datos"
                 }
             ]

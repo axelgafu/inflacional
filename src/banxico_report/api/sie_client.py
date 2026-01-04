@@ -1,3 +1,4 @@
+import re
 import requests
 from ..utils.logger import setup_logger
 
@@ -14,6 +15,11 @@ class SIEClient:
             "Accept": "application/json"
         }
         
+    def _validate_date_format(self, date_str):
+        """Validates that the date string is in YYYY-MM-DD format."""
+        if not re.match(r"^\d{4}-\d{2}-\d{2}$", date_str):
+            raise ValueError(f"Date must be in YYYY-MM-DD format, got: {date_str}")
+
     def get_series_data(self, serie_id, start_date=None, end_date=None):
         """
         Fetches data for a given series and date range.
@@ -22,6 +28,8 @@ class SIEClient:
         url = f"{self.BASE_URL}/Series/SeriesData/{serie_id}"
         
         if start_date and end_date:
+            self._validate_date_format(start_date)
+            self._validate_date_format(end_date)
             url += f"/{start_date}/{end_date}"
             
         if self.tracker:

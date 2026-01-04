@@ -1,4 +1,4 @@
-from .sie_client import SIEClient
+from .provider import SIEProvider
 from ..utils.logger import setup_logger
 
 logger = setup_logger(__name__)
@@ -14,8 +14,8 @@ def calculate_fix_variation(current_fix, previous_fix):
 class ExchangeRateFetcher:
     SERIE_ID = "SF43718"
     
-    def __init__(self, client: SIEClient):
-        self.client = client
+    def __init__(self, provider: SIEProvider):
+        self.provider = provider
         
     def get_fix_variation(self, meeting_date):
         """
@@ -27,7 +27,7 @@ class ExchangeRateFetcher:
         # specifically two dates.
         # Requirement: use nearest preceding business day found in SIE series.
         
-        # In a real implementation, we would call self.client.get_series_data
+        # In a real implementation, we would call self.provider.get_series_data
         # and process the response to find the correct two dates.
         # For now, this is the skeleton.
         

@@ -1,0 +1,20 @@
+{
+    "bmx": {
+        "series": [
+            {
+                "idSerie": "SP1",
+                "titulo": "Sample Serie for Testing",
+                "datos": [
+                    {
+                        "fecha": "2023-01-01",
+                        "dato": "100.0"
+                    },
+                    {
+                        "fecha": "2023-01-02",
+                        "dato": "101.5"
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -60,6 +60,33 @@ Generate your first report with a single command:
 banxico-report generate
 ```
 
+### Environment and Mocking
+
+The application supports two execution modes via the `INFLACIONAL_ENV` environment variable:
+
+- **production** (Default): Uses the real Banxico SIE API. Requires `SIE_TOKEN`.
+- **test**: Uses static JSON mocks from `tests/mocks/sie/`. No token or network required.
+
+Example of running in test mode:
+```bash
+# Unix
+INFLACIONAL_ENV=test banxico-report generate
+
+# Windows (PowerShell)
+$env:INFLACIONAL_ENV="test"; banxico-report generate
+```
+
+### Configuration
+
+You can customize the interest rate retrieval behavior using the following environment variable:
+
+- **INFLACIONAL_RATES_LOOKBACK**: (Optional, default: 7) Number of days to look back for an available interest rate if the report date falls on a non-business day.
+
+```bash
+# Example: Increase look-back window to 10 days
+set INFLACIONAL_RATES_LOOKBACK=10
+```
+
 ---
 
 ## 📖 Documentation

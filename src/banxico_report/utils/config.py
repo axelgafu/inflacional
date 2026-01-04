@@ -19,3 +19,6 @@ def get_token():
         # In a real app we might want a more specific exception
         raise ValueError("Missing SIE_TOKEN environment variable. Please check your .env file.")
     return token
+def get_lookback_window():
+    """Returns the lookback window for interest rates (default 7 days)."""
+    return int(os.getenv("INFLACIONAL_RATES_LOOKBACK", 7))

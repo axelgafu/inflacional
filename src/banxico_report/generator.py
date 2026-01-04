@@ -4,7 +4,7 @@ from .parsers.inflation import InflationParser
 from .parsers.target import TargetFetcher
 from .api.rates import RatesFetcher
 from .api.exchange import ExchangeRateFetcher
-from .api.sie_client import SIEClient
+from .api.factory import SIEProviderFactory
 from .generators.table import TableGenerator
 from .generators.references import APAFormatter
 from .templates.engine import RuleEngine
@@ -20,13 +20,18 @@ class ReportGenerator:
     def __init__(self):
         token = get_token()
         self.metadata_tracker = MetadataTracker()
-        self.sie_client = SIEClient(token, tracker=self.metadata_tracker)
+        self.sie_provider = SIEProviderFactory.get_provider(token)
         
+        if hasattr(self.sie_provider, 'client'):
+             # If it's the real provider, we might want to attach the tracker
+             # This is a bit of a leak but okay for now to maintain telemetry
+             self.sie_provider.client.tracker = self.metadata_tracker
+
         self.calendar_parser = CalendarParser()
         self.inflation_parser = InflationParser()
         self.target_fetcher = TargetFetcher()
-        self.rates_fetcher = RatesFetcher(self.sie_client)
-        self.exchange_fetcher = ExchangeRateFetcher(self.sie_client)
+        self.rates_fetcher = RatesFetcher(self.sie_provider)
+        self.exchange_fetcher = ExchangeRateFetcher(self.sie_provider)
         
         self.table_generator = TableGenerator()
         self.apa_formatter = APAFormatter()

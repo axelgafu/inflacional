@@ -7,7 +7,8 @@ from ..utils.config import get_lookback_window
 logger = setup_logger(__name__)
 
 class RatesFetcher:
-    SERIE_TARGET_RATE = "TI52"
+    # Updated to TIIE de Fondeo a Un Día Hábil Bancario (SF331451) per user requirement
+    SERIE_TARGET_RATE = "SF331451"
     
     def __init__(self, provider: SIEProvider, lookback_window: int = None):
         self.provider = provider

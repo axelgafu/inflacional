@@ -48,8 +48,9 @@ As a maintainer, I want the internal technical documentation to explicitly refer
 
 - **FR-001**: The `SIEClient` MUST send the API token using the `Bmx-Token` HTTP header.
 - **FR-002**: The `SIEClient` MUST NOT use query parameters for authentication (if currently doing so) unless supported/required as fallback; header is preferred/mandatory.
-- **FR-003**: API requests MUST use the correct base URL `https://www.banxico.org.mx/SieAPIRest/service/v1/` and `YYYY-MM-DD` date format for path parameters.
+- **FR-003**: API requests MUST use the correct base URL `https://www.banxico.org.mx/SieAPIRest/service/v1/` and `YYYY-MM-DD` date format. Target Series ID MUST be `SF331451` (TIIE de Fondeo).
 - **FR-004**: Technical documentation MUST be updated to reference the official Banxico API documentation URL.
+- **FR-005**: Application MUST parse API error responses to provide actionable user feedback (e.g., distinguishing auth errors from data errors).
 
 ### Key Entities
 
